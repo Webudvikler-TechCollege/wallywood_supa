@@ -8,6 +8,7 @@ import { LoginPage } from "../../Pages/LoginPage/LoginPage"
 import { CartPage } from "../../Pages/CartPage/CartPage"
 import { ContactPage } from "../../Pages/ContactPage/ContactPage"
 
+
 export const AppRouter = () => {
   return (
 	<Routes>

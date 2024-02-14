@@ -33,13 +33,13 @@ export const PosterDetails = () => {
   const add2Cart = async data => {
     if (supabase) {
 
-      const { data: { session: { user: { id: user_id }}}} = await supabase.auth.getSession()
+      const { data: { user } } = await supabase?.auth.getUser()
 
       const { data: cart, error } = await supabase
         .from("cart")
         .insert([
           {
-            user_id: user_id,
+            user_id: user.id,
             poster_id: data.poster_id,
             quantity: data.quantity
           }

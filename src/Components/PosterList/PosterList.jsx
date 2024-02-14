@@ -12,7 +12,7 @@ export const PosterList = () => {
     if (supabase) {
       const { data, error } = await supabase
         .from("genres")
-        .select("id, posters(id, name, image, price, slug)")
+        .select("id, title, posters(id,name,image,price,slug)")
         .eq("slug", genreSlug)
       if (error) {
         console.error("Error fetching posters", error)
