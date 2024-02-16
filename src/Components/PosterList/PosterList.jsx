@@ -32,26 +32,26 @@ export const PosterList = () => {
   return (
     <PosterListContainer>
       <h1>Plakater - {genreSlug}</h1>
-	  <div>
-      {posters &&
-        posters.map((poster) => {
-          return (
-            <div key={poster.id}>
-              <figure>
-                <Link to={`/posters/details/${poster.slug}`}>
-                  <img src={poster.image} alt="" />
-                </Link>
-              </figure>
-              <p>
-                <Link to={`/posters/details/${poster.slug}`}>
-                  {poster.name}
-                </Link>
-              </p>
-              <p>DKK {poster.price},00</p>
-            </div>
-          )
-        })}
-		</div>
+      <div>
+        {posters &&
+          posters.map((poster) => {
+            return (
+              <div key={poster.id}>
+                <figure>
+                  <Link to={`/posters/details/${poster.slug}`}>
+                    <img src={poster.image} alt="" />
+                  </Link>
+                </figure>
+                <p>
+                  <Link to={`/posters/details/${poster.slug}`}>
+                    {poster.name}
+                  </Link>
+                </p>
+                <p>DKK {poster.price},00</p>
+              </div>
+            )
+          })}
+      </div>
     </PosterListContainer>
   )
 }

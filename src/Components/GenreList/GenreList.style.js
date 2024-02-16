@@ -1,38 +1,36 @@
-import styled from 'styled-components'
-import { ResetList } from '../../Styled/Mixins.style'
+import styled from "styled-components"
+import { ResetList } from "../../Styled/Mixins.style"
 
 export const GenreListContainer = styled.div`
-	ul {
-		${ResetList}
 
-		@media screen and (width < 820px) {
-			border: solid 1px #000;
-			display: none;
-		}
+  ul {
+    display: none;
+    ${ResetList}
+    
+    @media screen and (min-width: ${(props) => props.theme.grid.breakpoints.m}) {
+      display: block;
+    }
 
-		a {
-			text-decoration: none;
-			color: ${props => props.theme.colors.tertiary}
+    a {
+      text-decoration: none;
+      color: ${(props) => props.theme.colors.tertiary};
+    }
+    .active {
+      color: ${(props) => props.theme.colors.secondary};
+      &::before {
+        content: "» ";
+      }
+    }
+  }
 
-		}
-		.active {
-			color: ${props => props.theme.colors.secondary};
-			&::before {
-				content: "» ";
-			}
-		}
-	}
+  select {
+    width: 100%;
+    padding: 0.4rem;
+    margin: 0 auto;
 
-	select {
-		display: none;
-		width: 100%;
-		padding: 0.4rem;
-		margin: 0 auto;
-
-		@media screen and (width < 820px) {
-			display: block;
-			margin-bottom: 1rem;
-		}
-	}
-
+    @media screen and (min-width: ${(props) => props.theme.grid.breakpoints.m}) {      
+      display: none;
+      margin-bottom: 1rem;
+    }
+  }
 `

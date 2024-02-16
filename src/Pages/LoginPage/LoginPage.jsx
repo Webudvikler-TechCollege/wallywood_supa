@@ -40,7 +40,11 @@ export const LoginPage = () => {
     return (
       <ContentWrapper title="Login" description="Login to the site">
         {supabase && (
-          <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
+          <Auth 
+            supabaseClient={supabase} 
+            appearance={{ theme: ThemeSupa }} 
+            providers={["github", "apple", "google"]}
+          />
         )}
       </ContentWrapper>
     )
