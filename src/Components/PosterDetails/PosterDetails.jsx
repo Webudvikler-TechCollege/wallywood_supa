@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { PosterDetailsContainer } from "./PosterDetails.style"
 import { useForm } from "react-hook-form"
 import { useSupabase } from "../../Providers/SupabaseProvider"
+import { Rating } from "../Rating/Rating"
 
 export const PosterDetails = () => {
   const { supabase } = useSupabase()
@@ -72,6 +73,7 @@ export const PosterDetails = () => {
         <p>Varenummer: {poster.id}</p>
         <p>Pris: {poster.price},00 DKK</p>
         <p>Antal på lager: {poster.stock} DKK</p>
+        <Rating poster_id={poster.id} />
 
         <form onSubmit={handleSubmit(add2Cart)}>
           <input type="hidden" defaultValue={poster.id} {...register('poster_id')} />

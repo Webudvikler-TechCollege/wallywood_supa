@@ -4,6 +4,7 @@ import { useSupabase } from "../../Providers/SupabaseProvider"
 import { useState } from "react"
 import { ContentWrapper } from "../ContentWrapper/ContentWrapper"
 import { Link } from "react-router-dom"
+import { FormContainer } from "../../Styled/Form.style"
 
 export const ContactForm = () => {
   const {
@@ -42,7 +43,9 @@ export const ContactForm = () => {
           <br />
           Wallywood staff
         </p>
-		<p><Link to="/">Gå til forsiden</Link></p>
+        <p>
+          <Link to="/">Gå til forsiden</Link>
+        </p>
       </ContentWrapper>
     )
   }
@@ -52,56 +55,54 @@ export const ContactForm = () => {
       title="Kontakt os"
       subtitle="Udfyld nedenstående formular og send"
     >
-      <ContactFormContainer>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <label htmlFor="firstname">Fornavn:</label>
-            <input
-              type="text"
-              id="firstname"
-              placeholder="Indtast fornavn"
-              {...register("firstname", { required: true })}
-            />
-          </div>
-          <div>
-            <label htmlFor="lastname">Efternavn:</label>
-            <input
-              type="text"
-              id="lastname"
-              placeholder="Indtast efternavn"
-              {...register("lastname", { required: true })}
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Indtast email"
-              {...register("email", { required: true })}
-            />
-          </div>
-          <div>
-            <label htmlFor="phone">Telefon:</label>
-            <input
-              type="text"
-              id="phone"
-              placeholder="Indtast telefonnummer"
-              {...register("phone", { required: true })}
-            />
-          </div>
-          <div>
-            <label htmlFor="comment">Besked:</label>
-            <textarea
-              id="comment"
-              placeholder="Indtast besked"
-              {...register("comment", { required: true })}
-            ></textarea>
-          </div>
-          <button type="submit">Send</button>
-          <button type="reset">Nulstil felter</button>
-        </form>
-      </ContactFormContainer>
+      <FormContainer onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="firstname">Fornavn:</label>
+          <input
+            type="text"
+            id="firstname"
+            placeholder="Indtast fornavn"
+            {...register("firstname", { required: true })}
+          />
+        </div>
+        <div>
+          <label htmlFor="lastname">Efternavn:</label>
+          <input
+            type="text"
+            id="lastname"
+            placeholder="Indtast efternavn"
+            {...register("lastname", { required: true })}
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Indtast email"
+            {...register("email", { required: true })}
+          />
+        </div>
+        <div>
+          <label htmlFor="phone">Telefon:</label>
+          <input
+            type="text"
+            id="phone"
+            placeholder="Indtast telefonnummer"
+            {...register("phone", { required: true })}
+          />
+        </div>
+        <div>
+          <label htmlFor="comment">Besked:</label>
+          <textarea
+            id="comment"
+            placeholder="Indtast besked"
+            {...register("comment", { required: true })}
+          ></textarea>
+        </div>
+        <button type="submit">Send</button>
+        <button type="reset">Nulstil felter</button>
+      </FormContainer>
     </ContentWrapper>
   )
 }

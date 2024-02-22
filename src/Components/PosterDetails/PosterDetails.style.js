@@ -6,7 +6,7 @@ export const PosterDetailsContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  div:last-of-type {
+  > div:nth-of-type(2) {
     margin-left: 1rem;
   }
 

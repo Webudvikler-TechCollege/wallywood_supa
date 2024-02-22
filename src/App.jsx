@@ -11,12 +11,12 @@ const App = () => {
     <>
       <ContainerStyle $maxwidth="1024">
         <Grid>
-        <Header area="header" />
-        <NavBar area="navbar" />
-        <Main area="main">
-          <AppRouter />
-        </Main>
-        <Footer area="footer" />
+          <Header area="header" />
+          <NavBar area="navbar" />
+          <Main area="main">
+            <AppRouter />
+          </Main>
+          <Footer area="footer" />
         </Grid>
       </ContainerStyle>
     </>

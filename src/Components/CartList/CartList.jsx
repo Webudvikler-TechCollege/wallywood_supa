@@ -2,29 +2,23 @@ import { CartListContainer } from "./CartList.style"
 import { AiFillDelete } from "react-icons/ai"
 import { useSupabase } from "../../Providers/SupabaseProvider"
 import { useEffect, useState } from "react"
+import { useAuth } from "../../Providers/AuthProvider"
 
 export const CartList = () => {
   const { supabase } = useSupabase()
-  const [cartData, setCartData] = useState([])
+  const { loginData } = useAuth()
+  const [ cartData, setCartData ] = useState([])
 
   const getData = async () => {
-    if (supabase) {
-      const {
-        data: {
-          session: {
-            user: { id: user_id },
-          },
-        },
-      } = await supabase.auth.getSession()
+    if(supabase && loginData && loginData.user) {
 
       const { data, error } = await supabase
         .from("cart")
         .select("*, posters(name, price)")
-		    .eq("user_id", user_id)
+		    .eq("user_id", loginData.user.id)
       if (error) {
         console.error("Error fetching cart", error)
       } else {
-        console.log(data)
         setCartData(data)
       }
     }
@@ -50,7 +44,9 @@ export const CartList = () => {
   }
 
   return (
-    <CartListContainer>
+    <>
+    {loginData && loginData.user ? (
+      <CartListContainer>
       <div>
         <div>Produkt</div>
         <div>Antal</div>
@@ -76,5 +72,10 @@ export const CartList = () => {
         <div>{sum},00 DKK</div>
       </div>
     </CartListContainer>
+
+    ) : (
+        <p>Log ind for at se indkøbskurv</p>
+    )}
+    </>
   )
 }
